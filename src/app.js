@@ -1,10 +1,43 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-const title ='My React App'
 
-const App =() =>{
-     
-    return <div> My React App </div>
+const SearchForm = () => (
+    <form>
+        <input type="text" />
+        <button>Search</button>
+    </form>
+)
+
+const MovieList = (props) => (
+    <ul>
+    {props.movies.map((movie, i) => {
+        return (
+            <li key={i}>{movie.title}</li>
+        )
+    })}
+    </ul>
+)
+
+const App = () => {
+    const movies = [
+        {
+            title: 'Rogue One: A Star Wars Story'
+        },
+        {
+            title: 'Guardians of the Galaxy Vol. 2'
+        },
+        {
+            title: 'Doctor Strange'
+        }
+    ]
+    return (
+        <section>
+            <h1>Movie Collection</h1>
+            <SearchForm />
+            <MovieList movies={movies} />
+        </section>
+    )
 }
-const elemet =document.getElementById('app')
-ReactDOM.render(<App /> ,elemet)
+
+ReactDOM.render(<App />, document.getElementById('app'))
+
